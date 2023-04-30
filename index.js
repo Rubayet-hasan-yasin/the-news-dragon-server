@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const cors = require('cors')
+
 const port = process.env.PORT || 5000;
 
 
@@ -8,9 +8,15 @@ const port = process.env.PORT || 5000;
 const categories = require('./data/categories.json')
 const news = require('./data/news.json')
 
+const cors=require("cors");
+const corsOptions ={
+   origin:'*', 
+   credentials:true,    
+   optionSuccessStatus:200,
+}
 
+app.use(cors(corsOptions))
 
-app.use(cors());
 
 app.get('/', (req, res) => {
     res.send('Dragon is running')
